@@ -20,7 +20,9 @@ app.use(helmet());
 //set up mongoose connection
 var mongoose = require('mongoose');
 // var mongoDB = 'mongodb://librarytest:librarytest_1@ds117681.mlab.com:17681/local_library_sample';
-var mongoDB = process.env.MONGODB_URI || 'mongodb://librarytest:librarytest_1@ds117681.mlab.com:17681/local_library_sample'
+// var mongoDB = process.env.MONGODB_URI || 'mongodb://librarytest:librarytest_1@ds117681.mlab.com:17681/local_library_sample'
+var mongoDB = process.env.MONGODB_URI || 'mongodb://szewah:peanuts2@ds159651.mlab.com:59651/local_library'
+
 
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
