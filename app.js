@@ -6,13 +6,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
 var index = require('./routes/index');
 var users = require('./routes/users');
 var catalog = require('./routes/catalog'); 
+var compression = require('compression');
+var helmet = require('helmet');
 
 
 var app = express();
+
+app.use(helmet());
 
 //set up mongoose connection
 var mongoose = require('mongoose');
@@ -34,6 +37,9 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false })); //This is a built-in middleware function in Express. It parses incoming requests with urlencoded payloads and is based on body-parser.
 app.use(cookieParser());
+
+app.use(compression());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
